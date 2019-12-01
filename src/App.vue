@@ -1,25 +1,9 @@
 <template>
-  <b-container fluid>
-    <b-row>
-      <b-col>
-        <Header
-          v-bind:isAuthenticated="isAuthenticated"
-          v-bind:logout="logout"
-          v-bind:login="login"
-        />
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <router-view class="h-80"></router-view>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <Footer />
-      </b-col>
-    </b-row>
-  </b-container>
+  <div class="app">
+    <Header />
+    <router-view class="view"></router-view>
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -51,9 +35,44 @@ export default {
   }
 };
 </script>
-<style scoped>
-.h-80 {
-  height: 80vh !important;
-  background-color: #f9f871;
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+.color-title {
+  color: #96BAE3;
+}
+.color-primary {
+  color: rgba(98, 223, 181, 0.82);
+}
+.color-white {
+  color: white;
+}
+.background-primary {
+  background-color: rgba(98, 223, 181, 0.82);
+}
+.shadow-one-level {
+  color: rgba(0, 0, 0, 0.16);
+}
+.thin-border {
+  border: 1px solid #707070;
+}
+.box-shadow {
+  box-shadow: 0 3px 6px  rgba(0, 0, 0, 0.16);
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+}
+.app {
+  display: grid;
+  grid-template-columns: 1280px;
+  grid-template-rows: 200px 550px auto 100px;
+}
+.view {
+  margin: auto;
+  width: 1280px;
+  height: 100%;
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
 </style>
