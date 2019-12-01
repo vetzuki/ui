@@ -1,8 +1,6 @@
 <template>
-    <div class="new-user">
-        <div class="empty">
-        </div>
-        <Card class="main">
+    <Minimal>
+        <MainCard>
             <Title class="title" :title="'Hiring Should be a Sure Thing'" />
             <div class="cards">
                 <Card class="card-1-3 info-card">
@@ -32,68 +30,30 @@
                     </Body>
                 </Card>
             </div>
-        </Card>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="empty"></div>
-        <div class="call-to-action background-primary color-white thin-border">
-            Sign up
-        </div>
-    </div>
+        </MainCard>
+        <CallToAction :text="'Sign up'" class="background-primary color-white thin-border" />
+    </Minimal>
 </template>
 <script>
+import Minimal from '@/views/Minimal.vue'
+import MainCard from '@/components/MainCard.vue'
+import CallToAction from '@/components/CallToAction.vue'
 import Card from '@/components/Card.vue'
 import Title from '@/components/Title.vue'
 import Body from '@/components/Body.vue'
 export default {
     name: 'NewUser',
     components: {
+        CallToAction,
         Card,
         Title,
         Body,
+        MainCard,
+        Minimal,
     }
 }
 </script>
 <style scoped>
-.new-user {
-    display: grid;
-    grid-template-columns: 140px 1000px 140px;
-    grid-template-rows: 3px 400px 47px 100px;
-    grid-template-areas:
-        "empty empty empty"
-        "empty main empty"
-        "empty empty empty"
-        "empty callToAction empty";
-}
-.empty {
-    grid-area: "empty";
-    width: 100%;
-    height: 100%;
-}
-.call-to-action {
-    grid-area: "callToAction";
-    width: 333px;
-    height: 100px;
-    margin: auto;
-    text-align: center;
-    padding-top: 41px;
-    font-size: 1.5em;
-}
-.main {
-    grid-area: "main";
-    width: 100%;
-    height: 400px;
-
-    display: grid;
-    grid-template-columns: 1000px;
-    grid-template-rows: 93px 300px 7px;
-}
-
 .cards {
     display: flex;
     justify-content: space-evenly;

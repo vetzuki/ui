@@ -1,5 +1,5 @@
 <template>
-  <h1 class="title color-title">{{ title }}</h1>
+  <h1 class="title color-title font-primary">{{ title }}</h1>
 </template>
 <script>
 export default {
@@ -9,7 +9,6 @@ export default {
 </script>
 <style scoped>
 .title {
-    font-size: 2.2em;
-    font-family: 'Montserrat';
+    font-size: 2.4em;
 }
 </style>

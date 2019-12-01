@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import NewUser from '@/views/NewUser.vue'
-
+import Settings from '@/views/Settings.vue'
+import Candidates from '@/views/Candidates.vue'
+import NewScreening from '@/views/NewScreening.vue'
 Vue.use(Router)
 
 const router = new Router({
@@ -12,6 +14,21 @@ const router = new Router({
       name: 'NewUser',
       component: NewUser,
     },
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: Settings,
+    },
+    {
+      path: '/candidates',
+      name: 'Candidates',
+      component: Candidates,
+    },
+    {
+      path: '/screening',
+      name: 'NewScreening',
+      component: NewScreening,
+    }
   ]
 })
 /*

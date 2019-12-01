@@ -36,12 +36,18 @@ export default {
 };
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap'); */
 .color-title {
   color: #96BAE3;
 }
+.font-primary {
+  font-family: 'Helvetica';
+}
 .color-primary {
   color: rgba(98, 223, 181, 0.82);
+}
+.color-faded {
+  color: #707070;
 }
 .color-white {
   color: white;
