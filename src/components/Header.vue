@@ -1,6 +1,8 @@
 <template>
     <div class="header">
-        <Title :title="'VetZuki'" class="title" />
+        <router-link to="/">
+            <Title :title="'VetZuki'" class="title" />
+        </router-link>
         <Hamburger class="hamburger"/>
     </div>
 </template>

@@ -16,23 +16,28 @@
                     <Title class="card-title" :title="'Position'" />
                     <div class="inputs">
                         <form>
-                            <select>
-                                <option>DevOps</option>
+                            <select v-model="jobRole" class="font-primary color-faded">
+                                <option disabled value="" >Job Role</option>
+                                <option v-for="(jobRole, name) in jobRoles" :key="name">{{ name }} </option>
                             </select>
                         </form>
+                        <Body>
+                            {{ jobRoles.hasOwnProperty(jobRole) ? jobRoles[jobRole].text : ''}}
+                        </Body>
                     </div>
                 </Card>
                 <Card class="card-1-3 info-card">
                     <Title class="card-title" :title="'Links'" />
                     <div class="inputs">
                         <form>
-                            <input class="font-primary color-faded" placeholder="Add HR software link" id="hr-link" />
+                            <input class="font-primary color-faded" placeholder="Add HR software link" @blur="addHRLink"/>
                         </form>
                     </div>
+                    <BodyList :items="Array.from(thirdPartyLinks)" />
                 </Card>
             </div>
         </MainCard>
-        <CallToAction :text="'Invite Candidate'" class="background-primary color-white thin-border" />
+        <CallToAction :text="'Invite Candidate'" class="background-primary color-white thin-border" :disabled="hasErrors.length > 0" />
     </Minimal>
 </template>
 <script>
@@ -42,6 +47,8 @@ import CallToAction from '@/components/CallToAction.vue'
 import Card from '@/components/Card.vue'
 import Title from '@/components/Title.vue'
 import Body from '@/components/Body.vue'
+import BodyList from '@/components/BodyList.vue'
+import * as isValidUrl from 'is-valid-http-url'
 export default {
     name: 'NewUser',
     components: {
@@ -49,21 +56,58 @@ export default {
         Card,
         Title,
         Body,
+        BodyList,
         MainCard,
         Minimal,
     },
     created() {
         this.getEmployer()
+        this.getJobRoleDescriptions()
     },
     data() {
         return {
             employer: {},
+            hasErrors: [],
+            jobRoles: {},
+            jobRole: '',
+            thirdPartyLinks: [],
+        }
+    },
+    computed: {
+        hrLinkList() {
+            // eslint-disable-next-line
+            console.log(Array.from(this.thirdPartyLinks))
+            return Array.from(this.thirdPartyLinks)
         }
     },
     methods: {
         getEmployer() {
             this.employer = {name: 'Laomi Hozza'}
+        },
+        getJobRoleDescriptions() {
+            this.jobRoles = {
+                'DevOps': {
+                    text: "A robust test of an engineer",
+                },
+                'SysAdmin': {
+                    text: "Tests basic Linux engineer skills"
+                }
+            }
+        },
+        addHRLink(e) {
+            if (isValidUrl(e.target.value) && this.thirdPartyLinks.indexOf(e.target.value) < 0) {
+                this.thirdPartyLinks.push (e.target.value)
+            }
+            e.target.value = ''
+        },
+        deleteHRLink(link) {
+            let idx = this.thirdPartyLinks.indexOf(link)
+            if (idx < 0 ) {
+                return
+            }
+            this.thirdPartyLinks.splice(idx, 1)
         }
+
     }
 }
 </script>

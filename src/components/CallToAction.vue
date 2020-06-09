@@ -1,5 +1,5 @@
 <template v-slot:call-to-action>
-    <div class="call-to-action">
+    <div class="call-to-action" >
         {{text}}
     </div>
 </template>
@@ -8,6 +8,7 @@ export default {
     name: 'CallToAction',
     props: {
         text: String,
+        disabled: Boolean,
     }
 }
 </script>
@@ -22,4 +23,5 @@ export default {
     padding-top: 31px;
     font-size: 2em;
 }
+
 </style>

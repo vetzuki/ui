@@ -2,9 +2,9 @@ import auth0 from 'auth0-js'
 import EventEmitter from 'events';
 
 // Auth0 application Domain property
-const auth0Domain = "vetzuki-poc.auth0.com"
+const auth0Domain = process.ENV.AUTH_0_DOMAIN
 // Auth0 application client ID
-const auth0ClientID = "KcjLaUvnV3lr7Qm0CPHaHLozTYiqoJvy"
+const auth0ClientID = process.ENV.AUTH_0_CLIENT_ID
 // exchange the object with your own from the setup step above.
 let webAuth = new auth0.WebAuth({
   domain: auth0Domain,

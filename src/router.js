@@ -4,6 +4,7 @@ import NewUser from '@/views/NewUser.vue'
 import Settings from '@/views/Settings.vue'
 import Candidates from '@/views/Candidates.vue'
 import NewScreening from '@/views/NewScreening.vue'
+import Signup from '@/views/Signup.vue'
 Vue.use(Router)
 
 const router = new Router({
@@ -28,6 +29,11 @@ const router = new Router({
       path: '/screening',
       name: 'NewScreening',
       component: NewScreening,
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup,
     }
   ]
 })

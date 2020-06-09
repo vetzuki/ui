@@ -1,5 +1,7 @@
 # vetzuki
 
+Basic user interface to demonstrate how vetzuki works.
+
 ## Project setup
 ```
 npm install
